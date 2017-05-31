@@ -1,6 +1,8 @@
-file (GLOB SDIRS RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} *)
-foreach (SUBDIR ${SDIRS})
-    if (EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/${SUBDIR}/CMakeLists.txt")
-        add_subdirectory (${SUBDIR})
-    endif ()
-endforeach ()
+add_executable(test1 iostream_server/iostream_server.cpp)
+set(MAIN_LIB_LIST boost_system  boost_program_options boost_filesystem boost_coroutine boost_thread pthread boost_context boost_date_time boost_regex boost_timer boost_signals boost_locale)
+
+set_target_properties(test1 PROPERTIES COMPILE_FLAGS "-std=c++14")
+
+target_link_libraries(test1 ${MAIN_LIB_LIST})
+include_directories(../websocketpp/config)
+include_directories(../websocketpp)

@@ -228,7 +228,7 @@ endif ()
 if (BUILD_TESTS)
     add_subdirectory (test)
 endif ()
-
+add_subdirectory (src)
 print_used_build_config()
 
 export (PACKAGE websocketpp)
