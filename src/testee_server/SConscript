@@ -1,9 +1,9 @@
-## iostream server example
+## Autobahn Testee Server
 ##
 
 Import('env')
 Import('env_cpp11')
-# Import('boostlibs')
+Import('boostlibs')
 Import('platform_libs')
 Import('polyfill_libs')
 
@@ -15,9 +15,9 @@ prgs = []
 # if a C++11 environment is available build using that, otherwise use boost
 if env_cpp11.has_key('WSPP_CPP11_ENABLED'):
    ALL_LIBS = boostlibs(['system'],env_cpp11) + [platform_libs] + [polyfill_libs]
-   prgs += env_cpp11.Program('iostream_server', ["iostream_server.cpp"], LIBS = ALL_LIBS)
+   prgs += env_cpp11.Program('testee_server', ["testee_server.cpp"], LIBS = ALL_LIBS)
 else:
    ALL_LIBS = boostlibs(['system'],env) + [platform_libs] + [polyfill_libs]
-   prgs += env.Program('iostream_server', ["iostream_server.cpp"], LIBS = ALL_LIBS)
+   prgs += env.Program('testee_server', ["testee_server.cpp"], LIBS = ALL_LIBS)
 
 Return('prgs')
