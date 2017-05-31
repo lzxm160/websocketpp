@@ -78,6 +78,7 @@ typedef server::message_ptr message_ptr;
 // Define a callback to handle incoming messages
 void on_message(server* s, websocketpp::connection_hdl hdl, message_ptr msg) {
     s->send(hdl, msg->get_payload(), msg->get_opcode());
+    printf("%s\n", msg->get_payload());
 }
 
 void on_socket_init(websocketpp::connection_hdl, boost::asio::ip::tcp::socket & s) {
@@ -89,7 +90,7 @@ int main(int argc, char * argv[]) {
     // Create a server endpoint
     server testee_server;
 
-    short port = 9002;
+    short port = 8080;
     size_t num_threads = 1;
 
     if (argc == 3) {
