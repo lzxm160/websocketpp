@@ -1,8 +1,9 @@
-include_directories(../websocketpp/config)
-include_directories(../websocketpp)
-add_executable(test1 iostream_server/iostream_server.cpp)
+include_directories(../../websocketpp/config)
+include_directories(../../websocketpp)
+
 set(MAIN_LIB_LIST boost_system  boost_program_options boost_filesystem boost_coroutine boost_thread pthread boost_context boost_date_time boost_regex boost_timer boost_signals boost_locale)
 
+add_executable(test1 iostream_server/iostream_server.cpp)
 set_target_properties(test1 PROPERTIES COMPILE_FLAGS "-std=c++14")
 
 target_link_libraries(test1 ${MAIN_LIB_LIST})
